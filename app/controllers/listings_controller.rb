@@ -1,4 +1,4 @@
-class ListingController < ApplicationController
+class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -15,7 +15,7 @@ class ListingController < ApplicationController
 
     def create
       @listing = Listing.create(listings_params)
-      if @listing.errors,any?
+      if @listing.errors.any?
         set_breeds_and_sexes
         render "new"
       else
