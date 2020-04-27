@@ -1,15 +1,16 @@
 class ListingController < ApplicationController
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+
     def index
         @listings = Listing.all
     end
 
     def show
-        id = params[:id]
-        @listing = Listing.find(id)
+      
     end
 
     def new
-
+      @listing = Listing.new
     end
 
     def create
@@ -23,8 +24,6 @@ class ListingController < ApplicationController
     end
 
     def edit
-        @listing = Listing.find(params["id"])
-    
     end
 
     def update
@@ -35,5 +34,12 @@ class ListingController < ApplicationController
     def destroy
         Listing.find(params["id"]).destroy
         redirect_to listings_paths
+    end
+
+    private
+
+    def set_listing
+    id = params[:id]
+    @listing = Listing.find(id)
     end
 end
