@@ -1,6 +1,17 @@
+<%= link_to "create listing", new_listing_path %>
 <%  for listing in @listings %>
-    <li>
-        <%= link_to listing.title, listing_path(listing.id)%>
+    <div class="listing">
         <%= image_tag listing.picture if listing.picture.attached? %>
-    </li>
-<% end %>
+        <div class="info">
+            <div class="info-bar">
+                <div>$<%= listing.price%></div>
+                <div><%= listing.sex%></div>
+                <div><%= listing.date_of_birth%></div>
+            </div>
+            <%= link_to listing.title, listing_path(listing.id)%>
+            <div><%= listing.description %></div>
+                        <br/>
+
+        </div>
+    </div>
+    <%end%>

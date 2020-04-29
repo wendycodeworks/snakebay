@@ -10,5 +10,4 @@ Rails.application.routes.draw do
  delete "listings/:id", to: "listings#destroy"
  get "/listings/:id/edit", to: "listings#edit", as: "edit_listing"
 
- get "*path", to: "pages#not_found"
 end
