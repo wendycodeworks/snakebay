@@ -1,6 +1,8 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
- 
+    before_action :authenticate_user!
+    before_action :set_user_listing, only: [:edit, :update, :destroy]
+    before_action :set_listing, only: [:show]
+
     def index
         @listings = Listing.all
     end
@@ -15,7 +17,7 @@ class ListingsController < ApplicationController
 
     def create
         #finish logic for creating a record
-        @listing = Listing.create(listing_params)
+        @listing = current_user.Listing.create(listing_params)
         if @listing.errors.any?
             set_breeds_and_sexes
             render "new"
