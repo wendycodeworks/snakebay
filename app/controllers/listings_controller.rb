@@ -1,18 +1,31 @@
+<<<<<<< HEAD
 class ListingsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_user_listing, only: [:edit, :update, :destroy]
     before_action :set_listing, only: [:show]
 
+=======
+class ListingController < ApplicationController
+>>>>>>> parent of cc79c09... add form in new.html.erb
     def index
         @listings = Listing.all
     end
 
     def show
+<<<<<<< HEAD
     end
 
     def new
         set_breeds_and_sexes
         @listing = Listing.new
+=======
+        id = params[:id]
+        @listing = Listing.find(id)
+    end
+
+    def new
+
+>>>>>>> parent of cc79c09... add form in new.html.erb
     end
 
     def create
@@ -27,7 +40,12 @@ class ListingsController < ApplicationController
     end
 
     def edit
+<<<<<<< HEAD
         set_breeds_and_sexes
+=======
+        @listing = Listing.find(params["id"])
+    
+>>>>>>> parent of cc79c09... add form in new.html.erb
     end
 
     def update
@@ -44,6 +62,7 @@ class ListingsController < ApplicationController
         Listing.find(params[:id]).destroy
         redirect_to listings_path
     end
+<<<<<<< HEAD
 
     private
 
@@ -70,4 +89,6 @@ class ListingsController < ApplicationController
 
     
 
+=======
+>>>>>>> parent of cc79c09... add form in new.html.erb
 end
